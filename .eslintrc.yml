@@ -1,4 +1,5 @@
 ---
+  parser: babel-eslint
   globals:
     describe: true
     it: true
@@ -8,7 +9,7 @@
     node: true
   rules:
     #no-param-reassign: 0
-    #semi: [2 never]
+    semi: [2, never]
     indent: [error, 2]
 
     #官方文档 http:#eslint.org/docs/rules/
