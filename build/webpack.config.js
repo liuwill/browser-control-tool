@@ -52,6 +52,15 @@ var myConfig = {
       {
         test: /\.(ttf|eot|svg|svg|woff|woff(2))(\?t\=[0-9]+)?$/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader',
+          options: {
+            minimize: true
+          }
+        }]
       }
     ]
   },
