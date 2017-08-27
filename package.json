@@ -1,7 +1,7 @@
 {
   "name": "browser-control-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "control browser for utility",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
