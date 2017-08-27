@@ -4,6 +4,7 @@
     describe: true
     it: true
     before: true
+    $: true
   env:
     browser: true
     node: true

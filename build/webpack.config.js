@@ -16,7 +16,8 @@ var StyleExtractPlugin = new ExtractTextPlugin({
 var myConfig = {
     // entry: "./client/main.js",
   entry: {
-    bundle: ['babel-polyfill', './src/app.js']
+    bundle: ['babel-polyfill', './src/app.js'],
+    vendor: ['jquery', 'bootstrap', 'popper.js']
   },
   resolve: {
     extensions: ['.js', '.scss', '.css']
@@ -40,6 +41,17 @@ var myConfig = {
                 // for normal use cases only node_modules is needed.
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.(css)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
+      },
+      {
+        test: /\.(ttf|eot|svg|svg|woff|woff(2))(\?t\=[0-9]+)?$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -54,14 +66,14 @@ var myConfig = {
       // Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'bundle',
-      chunks: ['bundle'],
+      name: 'vendor',
+      chunks: ['vendor', 'bundle'],
             // Modules must be shared between all entries
       minChunks: Infinity
       // minChunks: 2 // 提取所有chunks共同依赖的模块
     }),
     new HtmlWebpackPlugin({
-      chunks: [, 'bundle'],
+      chunks: ['vendor', 'bundle'],
       title: 'browser-control-tool',
       template: './index.html',
       filename: '../index.html',
