@@ -4,7 +4,9 @@
   "description": "control browser for utility",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "npm run build && npm run open",
+    "open": "electron .",
+    "lint": "eslint -c .eslintrc.yml .",
     "build": "rimraf dist && cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --hide-modules --config build/webpack.build.js",
     "test": "mocha --opts test/mocha.opts"
   },

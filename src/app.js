@@ -15,5 +15,5 @@ if (globalConfig.module === 'index') {
   workingModule = require('./component/index')
 }
 
-workingModule.init.call(null, globalConfig)
+workingModule.init.call(null, globalConfig, window.globalUtils)
 window._GlobalConfig.component = workingModule
